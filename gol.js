@@ -44,10 +44,6 @@ class gameBoard {
         return nhbMeasure;
     }
 }
-
-function setGeneration(generation){
-}
-
 function nextGeneration(generation){
     nextBoard = new gameBoard(generation.numberRows(), generation.numberCols());
     for (let i = 0; i < generation.numberRows(); i++){
@@ -75,7 +71,6 @@ function nextGeneration(generation){
         }
     }
 }
-
 // Presets
 function glider(currGeneration,i,j) {
     // ordered row by row
@@ -143,7 +138,6 @@ let context = canvas.getContext("2d");
 canvas.addEventListener('click', clickGrid);
 
 // Draw functions 
-
 function initBoard() {
     context.clearRect(0, 0, canvas.width,canvas.height);
     for (let i = 0; i < numberRow; i++) {
@@ -170,13 +164,11 @@ function updateBoard(currGeneration){
 }
 
 // Interations
-
 function clickGrid(ev){
     canvas.fillstyle = "000";
     context.fillRect(Math.floor(ev.offsetX / resolution)*resolution, Math.floor(ev.offsetY / resolution)*resolution, resolution-1, resolution-1);
     currBoard.birth(Math.floor(ev.offsetY / resolution),Math.floor(ev.offsetX / resolution));
 }
-
 let prevTime;
 let interval = null;
 document.getElementById("start").onclick = function () {
@@ -186,17 +178,14 @@ document.getElementById("start").onclick = function () {
         nextGeneration(currBoard);
     }, 300);
 };
-
 document.getElementById("pause").onclick = function () {
     clearInterval(interval);
-
 };
 document.getElementById("clear").onclick = function () {
     currBoard = new gameBoard(numberRow,numberCol);
     clearInterval(interval);
     initBoard(currBoard);
 };
-
 document.getElementById("pres1").onclick = function () {
     currBoard = new gameBoard(numberRow,numberCol);
     glider(currBoard, i, j);
